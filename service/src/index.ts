@@ -1,7 +1,7 @@
 import express from 'express'
 import type { ChatContext, ChatMessage } from './chatgpt'
 import { chatConfig, chatReplyProcess, currentModel } from './chatgpt'
-import { auth } from './middleware/auth'
+import { user_auth } from './middleware/auth'
 import { isNotEmptyString } from './utils/is'
 
 const app = express()
@@ -17,7 +17,7 @@ app.all('*', (_, res, next) => {
   next()
 })
 
-router.post('/chat-process', auth, async (req, res) => {
+router.post('/chat-process', user_auth, async (req, res) => {
   res.setHeader('Content-type', 'application/octet-stream')
 
   try {

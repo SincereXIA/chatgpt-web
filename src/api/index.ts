@@ -46,3 +46,13 @@ export function fetchVerify<T>(token: string) {
     data: { token },
   })
 }
+
+export function fetchUserVerify<T>(userName: string, password: string) {
+  return post<T>({
+    url: '/user_verify',
+    data: {
+      user: userName,
+      password,
+    },
+  })
+}
