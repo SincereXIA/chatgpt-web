@@ -16,7 +16,7 @@ on:
 env:
   IMAGE_NAME: chatweb
   REGISTRY_HOST: ccr.ccs.tencentyun.com
-  REGISTRY_URL: ccr.ccs.tencentyun.com/sincerexia/chatbot
+  REGISTRY_URL: ccr.ccs.tencentyun.com/sincerexia
 
 jobs:
 
