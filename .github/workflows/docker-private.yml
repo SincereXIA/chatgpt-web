@@ -38,6 +38,6 @@ jobs:
       with:
         tags: |
           ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:latest
-          ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:$(date +%s)
+          ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${{ strftime('%Y%m%d-%H%M%S') }}-${{ github.sha }}
         push: true
         
