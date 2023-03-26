@@ -17,6 +17,7 @@ env:
   IMAGE_NAME: chatweb
   REGISTRY_HOST: ccr.ccs.tencentyun.com
   REGISTRY_URL: ccr.ccs.tencentyun.com/sincerexia/chatbot
+  TAG_SUFFIX: $(date +'%Y%m%d-%H%M%S')
 
 jobs:
 
@@ -44,6 +45,6 @@ jobs:
       with:
         tags: |
           ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:latest
-          ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${{ strftime('%Y%m%d-%H%M%S') }}-${{ github.sha }}
+          ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${{ env.TAG_SUFFIX }}-${{ github.sha }}
         push: true
         
