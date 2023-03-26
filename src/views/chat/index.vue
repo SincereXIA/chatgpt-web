@@ -443,6 +443,13 @@ const footerClass = computed(() => {
   return classes
 })
 
+const noticeClass = computed(() => {
+  let classes = ['p-1']
+  if (isMobile.value)
+    classes = ['sticky', 'top-0', 'bottom-0', 'right-0', 'p-2', 'pr-3', 'overflow-hidden']
+  return classes
+})
+
 onMounted(() => {
   scrollToBottom()
 })

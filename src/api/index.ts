@@ -1,5 +1,7 @@
 import type { AxiosProgressEvent, GenericAbortSignal } from 'axios'
+import type { UnwrapRef } from 'vue'
 import { post } from '@/utils/request'
+import type { AuthState } from '@/store'
 
 export function fetchChatAPI<T = any>(
   prompt: string,
@@ -47,12 +49,9 @@ export function fetchVerify<T>(token: string) {
   })
 }
 
-export function fetchUserVerify<T>(userName: string, password: string) {
+export function fetchUserVerify<T>(token: string) {
   return post<T>({
     url: '/user_verify',
-    data: {
-      user: userName,
-      password,
-    },
+    data: { token },
   })
 }

@@ -32,8 +32,10 @@ export function getUserAuthToken() {
   // username:password
   const userName = ss.get(LOCAL_USER_NAME)
   const password = ss.get(LOCAL_USER_PASSWORD)
-  if (!userName || !password)
+  if (!userName || !password) {
+    console.log('no user')
     return undefined
+  }
   const raw = `${userName}:${password}`
   // base64 encode
   return btoa(raw)

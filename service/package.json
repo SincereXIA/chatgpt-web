@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "esno ./src/index.ts",
+    "sync": "esno ./src/data/synchronize.ts",
     "dev": "esno watch ./src/index.ts",
     "prod": "esno ./build/index.js",
     "build": "pnpm clean && tsup",
@@ -31,8 +32,10 @@
     "express": "^4.18.2",
     "https-proxy-agent": "^5.0.1",
     "isomorphic-fetch": "^3.0.0",
+    "mysql": "^2.18.1",
     "node-fetch": "^3.3.0",
-    "socks-proxy-agent": "^7.0.0"
+    "socks-proxy-agent": "^7.0.0",
+    "typeorm": "^0.3.12"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.3",

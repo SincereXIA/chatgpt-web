@@ -45,7 +45,7 @@ export const useAuthStore = defineStore('auth-store', {
       setUser(username, password)
       setToken(password)
       this.user = username
-      this.token = password
+      this.userToken = getUserAuthToken()
     },
 
     setToken(token: string) {
@@ -56,6 +56,11 @@ export const useAuthStore = defineStore('auth-store', {
     removeToken() {
       this.token = undefined
       removeToken()
+    },
+
+    removeUser() {
+      this.user = undefined
+      this.token = undefined
     },
   },
 })

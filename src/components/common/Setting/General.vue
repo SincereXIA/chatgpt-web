@@ -26,6 +26,8 @@ const name = ref(userInfo.value.name ?? '')
 
 const description = ref(userInfo.value.description ?? '')
 
+const isSuperUser = false;
+
 const language = computed({
   get() {
     return appStore.language
@@ -128,7 +130,7 @@ function handleImportButtonClick(): void {
         <div class="flex-1">
           <NInput v-model:value="avatar" placeholder="" />
         </div>
-        <NButton size="tiny" text type="primary" @click="updateUserInfo({ avatar })">
+        <NButton v-show="isSuperUser" size="tiny" text type="primary" @click="updateUserInfo({ avatar })">
           {{ $t('common.save') }}
         </NButton>
       </div>
@@ -137,16 +139,16 @@ function handleImportButtonClick(): void {
         <div class="w-[200px]">
           <NInput v-model:value="name" placeholder="" />
         </div>
-        <NButton size="tiny" text type="primary" @click="updateUserInfo({ name })">
+        <NButton size="tiny" text type="primary" @click="updateUserInfo({ name })" v-show="isSuperUser">
           {{ $t('common.save') }}
         </NButton>
       </div>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-4" v-show="isSuperUser">
         <span class="flex-shrink-0 w-[100px]">{{ $t('setting.description') }}</span>
         <div class="flex-1">
           <NInput v-model:value="description" placeholder="" />
         </div>
-        <NButton size="tiny" text type="primary" @click="updateUserInfo({ description })">
+        <NButton size="tiny" text type="primary" @click="updateUserInfo({ description })" v-show="isSuperUser">
           {{ $t('common.save') }}
         </NButton>
       </div>
@@ -213,7 +215,7 @@ function handleImportButtonClick(): void {
           />
         </div>
       </div>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-4" v-show="isSuperUser">
         <span class="flex-shrink-0 w-[100px]">{{ $t('setting.resetUserInfo') }}</span>
         <NButton size="small" @click="handleReset">
           {{ $t('common.reset') }}
