@@ -17,7 +17,6 @@ env:
   IMAGE_NAME: chatweb
   REGISTRY_HOST: ccr.ccs.tencentyun.com
   REGISTRY_URL: ccr.ccs.tencentyun.com/sincerexia/chatbot
-  TAG_SUFFIX: $(date +'%Y%m%d-%H%M%S')
 
 jobs:
 
@@ -26,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     - uses: actions/checkout@v3
     - name: Docker Login
       # You may pin to the exact commit or the version.
@@ -45,6 +47,6 @@ jobs:
       with:
         tags: |
           ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:latest
-          ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${{ env.TAG_SUFFIX }}-${{ github.sha }}
+          ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${{ steps.date.outputs.date }}-${{ github.sha }}
         push: true
         
